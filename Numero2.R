@@ -3,7 +3,7 @@ rm(list = ls())
 
 data_t2 <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t2.txt")
 
-glimpse(data_t2)
+#glimpse(data_t2)
 
 codigo_instancia <- c("I0", "I1", "I2", "I3", "I4", "I5");
 nome_instancia <- c("ACAD", "OMET", "PARM", "PSOA", "WAMS", "WMET");
@@ -19,15 +19,32 @@ for (inst_ in instancias$codigo_instancia){
   wt <- pairwise.wilcox.test(instancia$gd, instancia$config, p.adjust.method ="bonferroni", exact=F)$p.value
   
   print("Análise do critério de tamanho de população para o algoritmo genético")
-  print("")
+  cat("\n")
   print(paste("INSTÂNCIA ->", instancias %>% filter(instancias$codigo_instancia == inst_) %>%
                 select(nome_instancia)))
   
   
   print(paste("P-Value: ",pv))
-  
+  cat("\n")
   print("Teste de Wilcox usando a correção de Bonferroni")
+  cat("\n")
+  rownames <- names(wt[,1]);
+  colnames <- names(wt[1,]);
   
+  
+  for (i in 1:2) 
+  {
+    for (j in 1:i)
+    {
+      if (!is.nan(wt) && wt[i,j] < 0.05)
+      {
+        print(paste("Há diferenças signicativas entre", rownames[i], "e", colnames[j], sep=" "));
+      }
+    }
+  }
+  
+  cat("\n")
   print(wt)
+  cat("\n")
   print("------------------------------------------------------------------------------------------------")
 }
