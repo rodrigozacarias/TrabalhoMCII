@@ -32,7 +32,8 @@ data_t7_nsga_150k_c50_2x_error1_frontier_obj <- read.delim("C:\\Dados\\data_t7_n
 data_t7_nsga_150k_c50_2x_noerror_frontier_obj <- read.delim("C:\\Dados\\data_t7_nsga_150k_c50_2x_noerror_frontier_obj.txt");
 data_t7_SecondHalf_error1_frontier_obj <- read.delim("C:\\Dados\\data_t7_SecondHalf_error1_frontier_obj.txt");
 
-data  <- bind_rows(data_t7_Margarine_error1_frontier_obj,
+data  <- bind_rows(data_t7_CPM_error1_frontier_obj,
+                   data_t7_Margarine_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_noerror_frontier_obj,
             data_t7_SecondHalf_error1_frontier_obj);
