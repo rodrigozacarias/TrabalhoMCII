@@ -37,8 +37,6 @@ data  <- bind_rows(data_t7_Margarine_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_noerror_frontier_obj,
             data_t7_SecondHalf_error1_frontier_obj);
 
-
-
 data_ACAD <- filter(data, inst == "ACAD")
 
 data_PARM <- filter(data_t2, inst == "PARM")
@@ -86,4 +84,6 @@ ggplot_parm_3 <- ggplot(data_PARM, aes(x=noh, y=cst)) +
 figure <- grid.arrange(ggplot_acad_1, ggplot_acad_2, ggplot_acad_3, 
                        ggplot_parm_1, ggplot_parm_2, ggplot_parm_3,
                     ncol = 3, nrow = 2)
+
 figure
+
