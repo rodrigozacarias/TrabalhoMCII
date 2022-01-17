@@ -17,6 +17,8 @@ codigo_instancia <- c("I0", "I1", "I2", "I3", "I4", "I5");
 nome_instancia <- c("ACAD", "OMET", "PARM", "PSOA", "WAMS", "WMET");
 instancias <- tibble(codigo_instancia, nome_instancia)
 
+resultado <- tibble(Instancia_= character(), Abordagem= character(), IC= character(), IHV= character(), IGD= character(), ISP= character())
+
 
 for (inst_ in instancias$codigo_instancia){
   instancia <- data_t3t4 %>% filter(inst ==  inst_ & config	== 'nsga150k2x')
@@ -39,15 +41,29 @@ for (inst_ in instancias$codigo_instancia){
   es_sh_gd <- vargha.delaney (instancia$gd,SH$gd)  
   es_cpm_gd <- vargha.delaney (instancia$gd,CPM$gd)  
   
+  #aplicação do vargha.delayne para cada abordagem - ISP
+  es_mar_sp <- vargha.delaney (instancia$spr,MAR$spr)  
+  es_sh_sp <- vargha.delaney (instancia$spr,SH$spr)  
+  es_cpm_sp <- vargha.delaney (instancia$spr,CPM$spr)
+  
   abordagens <- c("MAR", "SH", "CPM");
   ic <- c(es_mar_best, es_sh_best, es_cpm_best)
   ihv <- c(es_mar_hv, es_sh_hv, es_cpm_hv)
   igd <- c(es_mar_gd, es_sh_gd, es_cpm_gd)
+  isp <- c(es_mar_sp, es_sh_sp, es_cpm_sp)
   
   instancia_atual <- instancias %>% filter(instancias$codigo_instancia == inst_) %>%
     select(nome_instancia)
   
-  resultado <- tibble(instancia_atual, abordagens,IC = ic*100, IHV = ihv*100, IGD = (1-igd)*100)
+  #Adicionando valores no resultado
+  resultado %<>% summarize(Instancia_ = paste(instancia_atual),
+                           Abordagem = paste(abordagens), 
+                           IC = paste(format(ic*100),"%"), 
+                           IHV = paste(format(ihv*100),"%"), 
+                           IGD = paste(format((1-igd)*100),"%"),
+                           ISP = paste(format((1-isp)*100),"%")) %>%
+    bind_rows(resultado , .)
   
-  print (resultado)
 }
+
+print (resultado)

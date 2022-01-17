@@ -17,6 +17,8 @@ codigo_instancia <- c("I0", "I1", "I2", "I3", "I4", "I5");
 nome_instancia <- c("ACAD", "OMET", "PARM", "PSOA", "WAMS", "WMET");
 instancias <- tibble(codigo_instancia, nome_instancia)
 
+resultado <- tibble(Instancia_= character(), Abordagem= character(), IC= character(), IHV= character(), IGD= character(), ISP= character())
+
 for (inst_ in instancias$codigo_instancia){
   instancia <- data_t5t6 %>% filter(inst ==  inst_ & config	== 'nsga150k2x')
   NSGASE <- data_t5t6 %>% filter(inst ==  inst_ & config	== 'nsga150k2xse')
@@ -30,14 +32,28 @@ for (inst_ in instancias$codigo_instancia){
   #aplicação do vargha.delayne para cada abordagem - IGD
   es_nsgase_gd <- vargha.delaney (instancia$gd,NSGASE$gd)  
   
+  #aplicação do vargha.delayne para cada abordagem - ISP
+  es_nsgase_sp <- vargha.delaney (instancia$spr,NSGASE$spr)  
+  
+  
   ic <- c(es_nsgase_best)
   ihv <- c(es_nsgase_hv)
   igd <- c(es_nsgase_gd)
+  isp <- c(es_nsgase_sp)
   
   abordagens <- c("NSGASE")
   
   instancia_atual <- instancias %>% filter(instancias$codigo_instancia == inst_) %>%
     select(nome_instancia)
-  resultado <- tibble(instancia_atual, abordagens, IC = ic*100, IHV = ihv*100, IGD = (1-igd)*100)
-  print (resultado)
+  #Adicionando valores no resultado
+  resultado %<>% summarize(Instancia_ = paste(instancia_atual),
+                           Abordagem = paste(abordagens), 
+                           IC = toString(paste(format(ic*100),"%")), 
+                           IHV = toString(paste(format(ihv*100),"%")), 
+                           IGD = toString(paste(format((1-igd)*100),"%")),
+                           ISP = toString(paste(format((1-isp)*10000),"%"))) %>%
+    bind_rows(resultado , .)
+  
 }
+
+print (resultado)
