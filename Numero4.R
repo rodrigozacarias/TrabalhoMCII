@@ -9,7 +9,7 @@ vargha.delaney <- function(r1, r2) {
   return ((sum(rank(c(r1, r2))[seq_along(r1)]) / m - (m + 1) / 2) / n);
 }
 
-data_t3t4 <- read.delim("C:\\Users\\Juliana.Carvalho\\Downloads\\Trabalho Final - Dados\\data_t3-t4.txt")
+data_t3t4 <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t3-t4.txt")
 
 glimpse(data_t3t4)
 
@@ -46,7 +46,7 @@ for (inst_ in instancias$codigo_instancia){
   
   instancia_atual <- instancias %>% filter(instancias$codigo_instancia == inst_) %>%
     select(nome_instancia)
-
+  
   resultado <- tibble(instancia_atual, abordagens,IC = ic*100, IHV = ihv*100, IGD = (1-igd)*100)
   
   print (resultado)

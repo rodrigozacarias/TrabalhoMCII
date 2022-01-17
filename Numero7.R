@@ -26,11 +26,11 @@ multiplyhundred <- function(l) {
   parse(text=l)
 } 
 
-data_t7_CPM_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_CPM_error1_frontier_obj.txt");
-data_t7_Margarine_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_Margarine_error1_frontier_obj.txt");
-data_t7_nsga_150k_c50_2x_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_error1_frontier_obj.txt");
-data_t7_nsga_150k_c50_2x_noerror_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_noerror_frontier_obj.txt");
-data_t7_SecondHalf_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_SecondHalf_error1_frontier_obj.txt");
+data_t7_CPM_error1_frontier_obj <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t7_CPM_error1_frontier_obj.txt");
+data_t7_Margarine_error1_frontier_obj <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t7_Margarine_error1_frontier_obj.txt");
+data_t7_nsga_150k_c50_2x_error1_frontier_obj <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t7_nsga_150k_c50_2x_error1_frontier_obj.txt");
+data_t7_nsga_150k_c50_2x_noerror_frontier_obj <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t7_nsga_150k_c50_2x_noerror_frontier_obj.txt");
+data_t7_SecondHalf_error1_frontier_obj <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t7_SecondHalf_error1_frontier_obj.txt");
 
 data  <- bind_rows(data_t7_Margarine_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_error1_frontier_obj,
