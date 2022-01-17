@@ -26,18 +26,16 @@ multiplyhundred <- function(l) {
   parse(text=l)
 } 
 
-data_t7_CPM_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_CPM_error1_frontier_obj.txt");
-data_t7_Margarine_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_Margarine_error1_frontier_obj.txt");
-data_t7_nsga_150k_c50_2x_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_error1_frontier_obj.txt");
-data_t7_nsga_150k_c50_2x_noerror_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_noerror_frontier_obj.txt");
-data_t7_SecondHalf_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia Científica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_SecondHalf_error1_frontier_obj.txt");
+data_t7_CPM_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia CientÃ­fica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_CPM_error1_frontier_obj.txt");
+data_t7_Margarine_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia CientÃ­fica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_Margarine_error1_frontier_obj.txt");
+data_t7_nsga_150k_c50_2x_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia CientÃ­fica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_error1_frontier_obj.txt");
+data_t7_nsga_150k_c50_2x_noerror_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia CientÃ­fica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_nsga_150k_c50_2x_noerror_frontier_obj.txt");
+data_t7_SecondHalf_error1_frontier_obj <- read.delim("C:\\Users\\Alexandro\\Google Drive\\UNIRIO\\AULAS\\2021-2\\Metodologia CientÃ­fica II\\Trabalho Final\\Trabalho\\Trabalho Final - Dados\\data_t7_SecondHalf_error1_frontier_obj.txt");
 
 data  <- bind_rows(data_t7_Margarine_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_error1_frontier_obj,
             data_t7_nsga_150k_c50_2x_noerror_frontier_obj,
             data_t7_SecondHalf_error1_frontier_obj);
-
-
 
 data_ACAD <- filter(data, inst == "ACAD")
 
@@ -86,4 +84,6 @@ ggplot_parm_3 <- ggplot(data_PARM, aes(x=noh, y=cst)) +
 figure <- grid.arrange(ggplot_acad_1, ggplot_acad_2, ggplot_acad_3, 
                        ggplot_parm_1, ggplot_parm_2, ggplot_parm_3,
                     ncol = 3, nrow = 2)
+
 figure
+
