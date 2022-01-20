@@ -49,10 +49,11 @@ data_ACAD <- filter(data, inst == "ACAD")
 data_PARM <- filter(data, inst == "PARM")
 
 ggplot_acad_1 <- ggplot(data_ACAD, aes(x=mks, y=cst)) + 
-  geom_point(aes(shape = factor(data), colour= factor(data)))+
+  geom_point(aes(shape = factor(data), colour = factor(data), size = factor(data)))+
   scale_shape_manual(values = c(3, 79, 1, 1, 2)) +
   scale_colour_manual(values = c("black","black", "light gray", "dark gray", "black")) +
-  guides(shape = FALSE, colour = FALSE) +
+  scale_size_manual(values = c(1.5, 2, 1.5, 1.5, 1.5)) +
+  guides(shape = FALSE, colour = FALSE, size = FALSE) +
   theme_test() +
   scale_y_continuous(labels=dividemile) +
   labs(title="ACAD", y="Cost(1000$)", x="Makespan(days)") + theme(plot.title = element_text(hjust = 0.97, vjust = -9.5, size = 8, face = "bold")) + theme(axis.title.x = element_text(margin = margin(t = 1), size = 7.5),
@@ -66,7 +67,7 @@ ggplot_acad_2 <- ggplot(data_ACAD, aes(x=noh, y=mks)) +
   guides(shape = FALSE, colour = FALSE, size = FALSE) +
   theme_test() +
   scale_y_continuous(breaks = seq(120, 160, 20)) +
-  scale_x_continuous(labels=multiplyten, limits = c(0, 40)) +
+  scale_x_continuous(labels=multiplyten, limits = c(0, 50)) +
   labs(title="ACAD", y="Makespan(days)", x="Overtime(hours)") + theme(plot.title = element_text(hjust = 0.97, vjust = -9.5, size = 8, face = "bold")) + theme(axis.title.x = element_text(margin = margin(t = 1), size = 7.5),
                                                                                                                                                               axis.title.y = element_text(margin = margin(r = 1), size = 7.5)) + theme(axis.text.y= element_text(angle = 90, vjust = 1, hjust = 0.5, size = 7))
 
