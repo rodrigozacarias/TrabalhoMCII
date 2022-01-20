@@ -4,7 +4,7 @@ rm(list = ls())
 
 data_t3_t4 <- read.delim("C:\\Users\\rodri\\OneDrive\\Documentos\\Material de Estudo\\MC II\\Trabalho Final\\Trabalho Final\\data_t3-t4.txt")
 
-glimpse(data_t3_t4)
+#glimpse(data_t3_t4)
 
 codigo_instancia <- c("I0", "I5", "I3", "I4", "I2", "I1");
 nome_instancia <- c("ACAD", "WMET", "PSOA", "WAMS", "PARM", "OMET");
@@ -14,10 +14,17 @@ quadro_qualidade <- tibble(Config= character(), NSGAII= character(), MAR= charac
 
 for (inst_ in instancias$codigo_instancia){
   instancia <- data_t3_t4 %>% filter(inst ==  inst_)
- 
   
+  print(paste("INSTÂNCIA ->", instancias %>% filter(instancias$codigo_instancia == inst_) %>%
+                select(nome_instancia)))
+  
+  c("\n")
+  print("Teste de Wilcoxon-Mann-Whitney")
+  c("\n")
   #Teste de Mann-Whitney
   
+  print("Indicador Ic")
+  c("\n")
   #Indicador Ic
   wt <- pairwise.wilcox.test(instancia$best, instancia$config, p.adjust.method ="bonferroni", exact=F)$p.value
   
@@ -38,6 +45,54 @@ for (inst_ in instancias$codigo_instancia){
   
   print(wt)
   cat("\n")
+  
+  print("Indicador Ihv")
+  c("\n")
+  #Indicador Ic
+  wt <- pairwise.wilcox.test(instancia$hv, instancia$config, p.adjust.method ="bonferroni", exact=F)$p.value
+  
+  rownames <- names(wt[,1]);
+  colnames <- names(wt[1,]);
+  
+  
+  for (i in 1:3) 
+  {
+    for (j in 1:i)
+    {
+      if (!is.nan(wt) && wt[i,j] < 0.05)
+      {
+        print(paste("Há diferenças signicativas entre", rownames[i], "e", colnames[j], sep=" "));
+      }
+    }
+  }
+  
+  print(wt)
+  cat("\n")
+  
+  print("Indicador Igd")
+  c("\n")
+  #Indicador Ic
+  wt <- pairwise.wilcox.test(instancia$gd, instancia$config, p.adjust.method ="bonferroni", exact=F)$p.value
+  
+  rownames <- names(wt[,1]);
+  colnames <- names(wt[1,]);
+  
+  
+  for (i in 1:3) 
+  {
+    for (j in 1:i)
+    {
+      if (!is.nan(wt) && wt[i,j] < 0.05)
+      {
+        print(paste("Há diferenças signicativas entre", rownames[i], "e", colnames[j], sep=" "));
+      }
+    }
+  }
+  
+  print(wt)
+  cat("\n")
+  
+  print("------------------------------------------------------------------------------------------------")
   
   #Criando Tabela
   

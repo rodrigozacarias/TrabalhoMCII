@@ -25,9 +25,11 @@ for (inst_ in instancias$codigo_instancia){
                 select(nome_instancia)))
   
 
+  print("Teste de Kruskal-Wallis")
+  cat("\n")
   print(paste("P-Value: ",pv))
   cat("\n")
-  print("Teste de Wilcox usando a correção de Bonferroni")
+  print("Teste de Wilcoxon-Mann-Whitney usando a correção de Bonferroni")
   cat("\n")
   
   rownames <- names(wt[,1]);
@@ -40,7 +42,7 @@ for (inst_ in instancias$codigo_instancia){
     {
       if (!is.nan(wt) && wt[i,j] < 0.05)
       {
-        print(paste("Há diferenças signicativas entre", rownames[i], "e", colnames[j], sep=" "));
+        print(paste("Há diferenças significativas entre", rownames[i], "e", colnames[j], sep=" "));
       }
     }
   }
