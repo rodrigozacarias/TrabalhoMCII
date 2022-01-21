@@ -83,7 +83,7 @@ ggplot_acad_3 <- ggplot(data_ACAD, aes(x=noh*0.8, y=cst)) +
   labs(title="ACAD", y="Cost(1000$)", x="Overtime(hours)") + theme(plot.title = element_text(hjust = 0.97, vjust = -9.5, size = 8, face = "bold")) + theme(axis.title.x = element_text(margin = margin(t = 1), size = 7.5),
                                                                                                                                                            axis.title.y = element_text(margin = margin(r = 1), size = 7.5)) + theme(axis.text.y= element_text(angle = 90, vjust = 1, hjust = 0.5, size = 7))
 
-ggplot_parm_1 <- ggplot(data_PARM, aes(x=noh*0.8, y=cst)) +
+ggplot_parm_1 <- ggplot(data_PARM, aes(x=mks, y=cst)) +
   geom_point(aes(shape = factor(data), colour = factor(data), size = factor(data)))+
   scale_shape_manual(values = c(3, 79, 1, 1, 2)) +
   scale_colour_manual(values = c("black","black", "light gray", "dark gray", "black")) +
